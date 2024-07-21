@@ -1,0 +1,5 @@
+project_id = "<your-project-id>"
+deploy_bucket = "<your-gcs-bucket>"
+
+# Consider using your name or nickname
+deploy_prefix = "<your-prefix>"

@@ -1,0 +1,21 @@
+swagger: '2.0'
+info:
+    title: Users API
+    description: Serverless users Rest API
+    version: '0.1'
+schemes:
+    - https
+produces:
+    - application/json
+paths:
+    /healthcheck:
+        get:
+            operationId: healthcheck
+            summary: Healthcheck endpoint
+            x-google-backend:
+                address: https://us-east1-sample-ms-soffredi.cloudfunctions.net/users-api-marcelo
+            responses:
+                '200':
+                    description: Healthcheck success response
+                    schema:
+                        type: string

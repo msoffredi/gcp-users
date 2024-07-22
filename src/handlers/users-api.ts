@@ -41,5 +41,5 @@ export const handler: HttpFunction = async (req: Request, res: Response) => {
         }
     }
 
-    res.status(status).send(body);
+    res.status(status).send(JSON.stringify(body));
 };

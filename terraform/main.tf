@@ -1,5 +1,5 @@
 terraform {
-    required_version = ">= 1.0"
+    required_version = ">= 1.9"
 }
 
 resource "google_storage_bucket" "deploy_bucket" {

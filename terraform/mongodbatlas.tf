@@ -16,8 +16,9 @@ resource "mongodbatlas_database_user" "db-user" {
     auth_database_name  = "admin"
 
     roles {
-        role_name       = "readWrite"
-        database_name   = "users-${var.deploy_prefix}"
+        role_name       = "readWriteAnyDatabase"
+        # database_name   = "gcp-ms-soffredi-db-${var.deploy_prefix}"
+        database_name   = "admin"
     }
 }
 

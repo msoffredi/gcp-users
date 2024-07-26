@@ -1,7 +1,6 @@
 // import { randomUUID } from 'crypto';
 import * as yup from 'yup';
 import { User, UserRecord } from '../models/user';
-import { Request } from '@google-cloud/functions-framework';
 import { RouteHandler } from '../api';
 import { ErrorEntry, RequestValidationError } from '../api-errors';
 
@@ -10,7 +9,7 @@ const validationSchema = yup.object({
     email: yup.string().email().required(),
 });
 
-export const createUserHandler: RouteHandler = async (req: Request) => {
+export const createUserHandler: RouteHandler = async (req) => {
     const errors: ErrorEntry[] = [];
 
     if (!req.body) {
@@ -22,13 +21,15 @@ export const createUserHandler: RouteHandler = async (req: Request) => {
         ]);
     }
 
-    const requestBody = JSON.parse(req.body);
+    let validatedBody: UserRecord = { name: '', email: '' };
 
     try {
-        await validationSchema.validate(requestBody, { abortEarly: false });
+        validatedBody = await validationSchema.validate(req.body, {
+            abortEarly: false,
+        });
 
         // Validate email does not exist
-        const existingUser = await User.findOne({ email: requestBody.email });
+        const existingUser = await User.findOne({ email: validatedBody.email });
 
         if (existingUser) {
             errors.push({
@@ -61,8 +62,8 @@ export const createUserHandler: RouteHandler = async (req: Request) => {
     // const id = randomUUID();
 
     const newUser: UserRecord = {
-        email: requestBody.email,
-        name: requestBody.name,
+        email: validatedBody.email,
+        name: validatedBody.name,
         // id: id,
     };
 
@@ -81,5 +82,5 @@ export const createUserHandler: RouteHandler = async (req: Request) => {
     //     );
     // }
 
-    return user.toJSON();
+    return user.toObject();
 };

@@ -22,6 +22,12 @@ const userSchema = new mongoose.Schema({
     },
 });
 
+userSchema.set('toJSON', {
+    versionKey: false,
+}).statics.build = (newUser: UserRecord) => {
+    return new User(newUser);
+};
+
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 
 export { User };

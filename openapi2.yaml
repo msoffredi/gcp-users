@@ -15,7 +15,23 @@ paths:
             x-google-backend:
                 address: https://us-east1-sample-ms-soffredi.cloudfunctions.net/users-api-marcelo
             responses:
-                '200':
+                200:
                     description: Healthcheck success response
-                    schema:
-                        type: string
+
+    /users:
+        post:
+            operationId: post-user
+            summary: POST user endpoint
+            x-google-backend:
+                address: https://us-east1-sample-ms-soffredi.cloudfunctions.net/users-api-marcelo
+            parameters:
+                - name: name
+                  in: body
+                  description: user name
+                  schema:
+                      type: string
+                      required:
+                          - name
+            responses:
+                200:
+                    description: POST user success

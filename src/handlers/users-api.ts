@@ -9,6 +9,7 @@ import { healthcheckHandler } from '../route-handlers/healthcheck';
 import { ResponseBody } from '../api';
 import mongoose from 'mongoose';
 import { validateEnvVars } from '../utils/validations';
+import { createUserHandler } from '../route-handlers/create-user';
 
 const startDb = async () => {
     try {
@@ -37,12 +38,23 @@ export const handler: HttpFunction = async (req: Request, res: Response) => {
     let body: ResponseBody = {};
 
     try {
-        switch (RequestHelper.getXEnvoyOriginalPath(req)) {
+        switch (RequestHelper.getPath(req)) {
             case '/healthcheck':
                 if (req.method === 'GET') {
                     body = await healthcheckHandler(req);
                 } else {
                     throw new BadMethodError();
+                }
+                break;
+
+            case '/users':
+                switch (req.method) {
+                    case 'POST':
+                        body = await createUserHandler(req);
+                        break;
+
+                    default:
+                        throw new BadMethodError();
                 }
                 break;
 

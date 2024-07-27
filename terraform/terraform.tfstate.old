@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.9.2",
-  "serial": 196,
+  "serial": 204,
   "lineage": "996ccaaf-88a2-d04c-48ef-d5bceaf69d90",
   "outputs": {
     "connection_string_pub": {
@@ -25,16 +25,16 @@
           "attributes": {
             "exclude_symlink_directories": null,
             "excludes": null,
-            "id": "77d645ea608ffc0397785dc0cf21a43e529842dd",
-            "output_base64sha256": "1o0Yac75XWl8YNDm7gvOfAMo0QkUuhQCMBTT/w4Q4Mg=",
-            "output_base64sha512": "Hw4Bz1Kj4TnHDl583i63+2r8XgVSjV8pHQQhhhs/Br2AJF5fbOGbJSmqBE/OyI4oTnuedSZzXYXw70eLQjmRSg==",
+            "id": "dd64f3046ca6d2974d6adcdedb43519b03641eba",
+            "output_base64sha256": "1zvn1oVaXkXnDNHjkJRZ/fic5H2J+ubTs95AGFRYsp0=",
+            "output_base64sha512": "98TjhsGjnGHvfZKGgyww4t1rSmE+tXBPYPNoj7MfNNdudSGbG1WM8+GQY+MMl9QUNcWKIlotZOlXGpuF9PKbSw==",
             "output_file_mode": null,
-            "output_md5": "2a3ee10c1fb721e24883bad28d7b068d",
+            "output_md5": "a2628d9b24a0341c340ed0f6319312c8",
             "output_path": "./tmp/function.zip",
-            "output_sha": "77d645ea608ffc0397785dc0cf21a43e529842dd",
-            "output_sha256": "d68d1869cef95d697c60d0e6ee0bce7c0328d10914ba14023014d3ff0e10e0c8",
-            "output_sha512": "1f0e01cf52a3e139c70e5e7cde2eb7fb6afc5e05528d5f291d0421861b3f06bd80245e5f6ce19b2529aa044fcec88e284e7b9e7526735d85f0ef478b4239914a",
-            "output_size": 30275,
+            "output_sha": "dd64f3046ca6d2974d6adcdedb43519b03641eba",
+            "output_sha256": "d73be7d6855a5e45e70cd1e3909459fdf89ce47d89fae6d3b3de40185458b29d",
+            "output_sha512": "f7c4e386c1a39c61ef7d9286832c30e2dd6b4a613eb5704f60f3688fb31f34d76e75219b1b558cf3e19063e30c97d41435c58a225a2d64e9571a9b85f4f29b4b",
+            "output_size": 30389,
             "source": [],
             "source_content": null,
             "source_content_filename": null,
@@ -90,7 +90,7 @@
             "gateway_config": [],
             "grpc_services": [],
             "id": "projects/sample-ms-soffredi/locations/global/apis/users-api-marcelo/configs/terraform-20240727204747516200000001",
-            "labels": null,
+            "labels": {},
             "managed_service_configs": [],
             "name": "projects/234970772427/locations/global/apis/users-api-marcelo/configs/terraform-20240727204747516200000001",
             "openapi_documents": [
@@ -160,7 +160,7 @@
             "build_config": [
               {
                 "automatic_update_policy": [],
-                "build": "projects/234970772427/locations/us-east1/builds/52ae56e9-918d-48e9-b89d-3d8b00fa82cf",
+                "build": "projects/234970772427/locations/us-east1/builds/9a28fe9c-aac0-4db4-8d79-c4ecc0e5c33d",
                 "docker_repository": "projects/sample-ms-soffredi/locations/us-east1/repositories/gcf-artifacts",
                 "entry_point": "handler",
                 "environment_variables": {},
@@ -173,8 +173,8 @@
                     "storage_source": [
                       {
                         "bucket": "sample-ms-soffredi-deployment",
-                        "generation": 1722113269967464,
-                        "object": "src-2a3ee10c1fb721e24883bad28d7b068d.zip"
+                        "generation": 1722115193275171,
+                        "object": "src-a2628d9b24a0341c340ed0f6319312c8.zip"
                       }
                     ]
                   }
@@ -222,7 +222,7 @@
             "state": "ACTIVE",
             "terraform_labels": {},
             "timeouts": null,
-            "update_time": "2024-07-27T20:49:28.597935668Z",
+            "update_time": "2024-07-27T21:21:41.616164011Z",
             "url": "https://us-east1-sample-ms-soffredi.cloudfunctions.net/users-api-marcelo"
           },
           "sensitive_attributes": [
@@ -332,19 +332,19 @@
             "content_encoding": "",
             "content_language": "",
             "content_type": "application/zip",
-            "crc32c": "BfmFXw==",
+            "crc32c": "/LiaNw==",
             "customer_encryption": [],
-            "detect_md5hash": "Kj7hDB+3IeJIg7rSjXsGjQ==",
+            "detect_md5hash": "omKNmySgNBw0DtD2MZMSyA==",
             "event_based_hold": false,
-            "id": "sample-ms-soffredi-deployment-src-2a3ee10c1fb721e24883bad28d7b068d.zip",
+            "id": "sample-ms-soffredi-deployment-src-a2628d9b24a0341c340ed0f6319312c8.zip",
             "kms_key_name": "",
-            "md5hash": "Kj7hDB+3IeJIg7rSjXsGjQ==",
-            "media_link": "https://storage.googleapis.com/download/storage/v1/b/sample-ms-soffredi-deployment/o/src-2a3ee10c1fb721e24883bad28d7b068d.zip?generation=1722113268347897\u0026alt=media",
+            "md5hash": "omKNmySgNBw0DtD2MZMSyA==",
+            "media_link": "https://storage.googleapis.com/download/storage/v1/b/sample-ms-soffredi-deployment/o/src-a2628d9b24a0341c340ed0f6319312c8.zip?generation=1722115192178806\u0026alt=media",
             "metadata": null,
-            "name": "src-2a3ee10c1fb721e24883bad28d7b068d.zip",
-            "output_name": "src-2a3ee10c1fb721e24883bad28d7b068d.zip",
+            "name": "src-a2628d9b24a0341c340ed0f6319312c8.zip",
+            "output_name": "src-a2628d9b24a0341c340ed0f6319312c8.zip",
             "retention": [],
-            "self_link": "https://www.googleapis.com/storage/v1/b/sample-ms-soffredi-deployment/o/src-2a3ee10c1fb721e24883bad28d7b068d.zip",
+            "self_link": "https://www.googleapis.com/storage/v1/b/sample-ms-soffredi-deployment/o/src-a2628d9b24a0341c340ed0f6319312c8.zip",
             "source": "./tmp/function.zip",
             "storage_class": "STANDARD",
             "temporary_hold": false,

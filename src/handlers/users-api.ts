@@ -12,6 +12,7 @@ import { createUserHandler } from '../route-handlers/create-user';
 import { MongoDBHelper } from '../utils/mongodb-helper';
 import { getOneUserHandler } from '../route-handlers/get-one-user';
 import { delUserHandler } from '../route-handlers/del-user';
+import { getUsersHandler } from '../route-handlers/get-users';
 
 export const handler: HttpFunction = async (req: Request, res: Response) => {
     console.log('Request received:', req);
@@ -20,7 +21,7 @@ export const handler: HttpFunction = async (req: Request, res: Response) => {
     await MongoDBHelper.startDb();
 
     let status = 200;
-    let body: ResponseBody = {};
+    let body: ResponseBody<unknown> = {};
 
     try {
         if (RequestHelper.getPath(req) === '/healthcheck') {
@@ -32,6 +33,8 @@ export const handler: HttpFunction = async (req: Request, res: Response) => {
         } else if (RequestHelper.getPath(req) === '/users') {
             if (req.method === 'POST') {
                 body = await createUserHandler(req);
+            } else if (req.method === 'GET') {
+                body = await getUsersHandler(req);
             } else {
                 throw new BadMethodError();
             }

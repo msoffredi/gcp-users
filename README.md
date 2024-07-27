@@ -17,3 +17,7 @@ Pre-requisites: you need your dependencies [installed](#installing-dependencies)
 ```
 > npm run ts-build
 ```
+
+## Swagger / OpenAPI file
+
+We use OpenAPI 2.0 for compatibility reasons with GCP API Gateway.

@@ -5,7 +5,8 @@ export class RequestHelper {
         const xEnvoyOriginalPath = req.headers['x-envoy-original-path'];
 
         if (typeof xEnvoyOriginalPath === 'string') {
-            return xEnvoyOriginalPath;
+            const pathElements = xEnvoyOriginalPath.split('?');
+            return String(pathElements[0]);
         }
 
         return '';

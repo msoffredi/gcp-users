@@ -1,6 +1,11 @@
 {
-    "name": "users",
+    "name": "gcp-users",
     "version": "0.1.0",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/msoffredi/gcp-users"
+    },
     "description": "Users serverless microservice",
     "main": "handlers/users-api.js",
     "scripts": {

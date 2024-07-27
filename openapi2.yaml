@@ -19,6 +19,30 @@ paths:
                     description: Healthcheck success response
 
     /users:
+        get:
+            operationId: get-users
+            summary: Get users sorted by creation date descending and paginated
+            x-google-backend:
+                address: https://us-east1-sample-ms-soffredi.cloudfunctions.net/users-api-marcelo
+                deadline: 60.0
+            parameters:
+                - name: lastCreatedAt
+                  in: query
+                  type: string
+                  description: When paginating this is the createdAt value of the last user received
+                - name: limit
+                  in: query
+                  type: string
+                  description: Maximum number of users to return (defaults to 20)
+            responses:
+                200:
+                    description: GET user success
+                    schema:
+                        type: object
+                422:
+                    description: Error retrieving users
+                    schema:
+                        type: object
         post:
             operationId: post-user
             summary: POST user endpoint
@@ -39,7 +63,6 @@ paths:
                               type: string
                           email:
                               type: string
-
             responses:
                 200:
                     description: POST user success

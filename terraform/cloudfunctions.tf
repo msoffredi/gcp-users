@@ -11,7 +11,6 @@ resource "google_storage_bucket_object" "zip" {
   bucket       = var.deploy_bucket
 
   depends_on = [
-    google_storage_bucket.deploy_bucket,
     data.archive_file.source
   ]
 }
@@ -20,11 +19,9 @@ resource "google_cloudfunctions2_function" "users_api_fn" {
     provider    = google
     name        = "users-api-${var.deploy_prefix}"
     description = "Users serverless microservice API"
-    # project     = var.project_id
     location    = var.region 
 
     depends_on  = [
-      google_storage_bucket.deploy_bucket,
       google_storage_bucket_object.zip,
     ]
 
@@ -35,7 +32,7 @@ resource "google_cloudfunctions2_function" "users_api_fn" {
 
       source {
         storage_source {
-          bucket = google_storage_bucket.deploy_bucket.name
+          bucket = var.deploy_bucket
           object = google_storage_bucket_object.zip.name
         }
       }
@@ -55,7 +52,9 @@ resource "google_cloudfunctions2_function" "users_api_fn" {
     }
 }
 
-output "function_uri" {
-    description = "Users microservice API function URI"
-    value       = google_cloudfunctions2_function.users_api_fn.service_config[0].uri
+resource "google_cloud_run_service_iam_member" "member" {
+  location = google_cloudfunctions2_function.users_api_fn.location
+  service  = google_cloudfunctions2_function.users_api_fn.name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
 }

@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema(
         email: {
             type: String,
             required: true,
+            index: true,
         },
     },
     {
@@ -27,7 +28,7 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-userSchema.set('toJSON', {
+userSchema.set('toObject', {
     versionKey: false,
 }).statics.build = (newUser: UserRecord) => {
     return new User(newUser);

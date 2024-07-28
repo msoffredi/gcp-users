@@ -6,8 +6,16 @@ interface ConstructAPIGwReqOptions {
     [key: string]: string | undefined;
 }
 
+interface TestHeaders {
+    [key: string]: string;
+}
+
 class TestResponse {
-    constructor(public statusCode = 200, public statusMessage = '') {}
+    constructor(
+        public statusCode = 200,
+        public statusMessage = '',
+        public headers: TestHeaders = {}
+    ) {}
 
     public status(statusCode: number): TestResponse {
         this.statusCode = statusCode;
@@ -16,6 +24,11 @@ class TestResponse {
 
     public send(data: string): TestResponse {
         this.statusMessage = data;
+        return this;
+    }
+
+    public set(headers: TestHeaders): TestResponse {
+        this.headers = headers;
         return this;
     }
 }
@@ -36,6 +49,6 @@ export class TestHelper {
     };
 
     public static getResponse = (): Response => {
-        return new TestResponse() as Response;
+        return new TestResponse() as unknown as Response;
     };
 }

@@ -89,34 +89,34 @@ paths:
                     description: Error retrieving one user
                     schema:
                         type: object
-        put:
-            operationId: put-user
-            summary: PUT user endpoint
-            x-google-backend:
-                address: https://us-east1-sample-ms-soffredi.cloudfunctions.net/users-api-marcelo
-                deadline: 60.0
-            parameters:
-                - name: userId
-                  in: path
-                  required: true
-                  type: string
-                - name: user
-                  in: body
-                  description: User to update
-                  schema:
-                      type: object
-                      properties:
-                          name:
-                              type: string
-                          email:
-                              type: string
-            responses:
-                200:
-                    description: PUT user success
-                400:
-                    description: Error
-                    schema:
-                        type: object
+        # put:
+        #     operationId: put-user
+        #     summary: PUT user endpoint
+        #     x-google-backend:
+        #         address: https://us-east1-sample-ms-soffredi.cloudfunctions.net/users-api-marcelo
+        #         deadline: 60.0
+        #     parameters:
+        #         - name: userId
+        #           in: path
+        #           required: true
+        #           type: string
+        #         - name: user
+        #           in: body
+        #           description: User to update
+        #           schema:
+        #               type: object
+        #               properties:
+        #                   name:
+        #                       type: string
+        #                   email:
+        #                       type: string
+        #     responses:
+        #         200:
+        #             description: PUT user success
+        #         400:
+        #             description: Error
+        #             schema:
+        #                 type: object
         delete:
             operationId: delete-user
             summary: DELETE user endpoint

@@ -53,3 +53,18 @@ variable "atlas_region" {
   # This is to access the M0 Serverless option. CHnage it to your needs
   default     = "CENTRAL_US"
 }
+
+variable "db_password" {
+  type        = string
+  description = "DB password"
+}
+
+variable "db_user" {
+  type        = string
+  description = "DB user"
+}
+
+variable "db_host" {
+  type        = string
+  description = "DB host. Should be like: mongodb+srv://<project_name>.<abc123>.mongodb.net"
+}

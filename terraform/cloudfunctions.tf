@@ -47,9 +47,9 @@ resource "google_cloudfunctions2_function" "users_api_fn" {
         timeout_seconds    = 100
 
         environment_variables = {
-            DB_USER = "gcp-ms-soffredi-user"
-            DB_PASSWORD = random_password.db-user-password.result
-            DB_HOST = mongodbatlas_serverless_instance.db-instance.connection_strings_standard_srv
+            DB_USER = var.db_user
+            DB_PASSWORD = var.db_password
+            DB_HOST = var.db_host
             DB_NAME = "gcp-ms-soffredi-db-${var.deploy_prefix}"
         }
     }

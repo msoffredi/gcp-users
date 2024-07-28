@@ -22,7 +22,7 @@ jobs:
               #     NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Building...
-              run: npm run ts-build --if-present
+              run: npm run build:gcp --if-present
 
             - name: Running tests...
               # run: npm run test:coverage

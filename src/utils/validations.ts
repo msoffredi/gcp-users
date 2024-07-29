@@ -8,17 +8,17 @@ export const validateEnvVars = (): void => {
     }
 
     if (!process.env.DB_USER) {
-        console.error('DB username env var defined');
+        console.error('No DB username env var defined');
         exit(1);
     }
 
     if (!process.env.DB_PASSWORD) {
-        console.error('DB password env var defined');
+        console.error('No DB password env var defined');
         exit(1);
     }
 
     if (!process.env.DB_HOST) {
-        console.error('DB host env var defined');
+        console.error('No DB host env var defined');
         exit(1);
     }
 };

@@ -12,6 +12,7 @@
     - Cloud Storage API
     - API Gateway API
     - Service Control API
+    - Eventarc API
     - MongoDB Atlas (with valid org and project. See the [variables.tf file](variables.tf) for data you need from your MongoDB Atlas instance)
 4. You copy `backend.tf.example` to `backend.tf` and update as needed (no update needed for local deploy)
 5. You copy `main.tfvars.example` to `main.tfvars` and update accordingly

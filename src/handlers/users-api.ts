@@ -14,7 +14,7 @@ import { getOneUserHandler } from '../route-handlers/get-one-user';
 import { delUserHandler } from '../route-handlers/del-user';
 import { getUsersHandler } from '../route-handlers/get-users';
 
-export const handler: HttpFunction = async (req: Request, res: Response) => {
+export const apiHandler: HttpFunction = async (req: Request, res: Response) => {
     console.log('Request received:', req);
 
     validateEnvVars();

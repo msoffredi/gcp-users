@@ -1,10 +1,10 @@
 import { Context, EventFunction } from '@google-cloud/functions-framework';
 import { PubsubMessage } from '@google-cloud/pubsub/build/src/publisher';
 import { validateEnvVars } from '../utils/validations';
-import { MongoDBHelper } from '../utils/mongodb-helper';
-import { EventTypes } from '../events';
 import { clientCreatedEventHandler } from '../event-handlers/client-created-event';
 import { clientDeletedEventHandler } from '../event-handlers/client-deleted-event';
+import { startDb } from '../utils/db';
+import { EventTypes, MongoDBHelper } from '@msoffredi/gcp-common';
 
 export const eventsHandler: EventFunction = async (
     event: PubsubMessage,
@@ -14,15 +14,20 @@ export const eventsHandler: EventFunction = async (
     console.log('Event context', context);
 
     validateEnvVars();
-    await MongoDBHelper.startDb();
+    await startDb();
 
-    if (event.attributes?.type === EventTypes.ClientCreated) {
-        await clientCreatedEventHandler(event);
-        return;
+    switch (String(event.attributes?.type)) {
+        case EventTypes.ClientCreated:
+            await clientCreatedEventHandler(event);
+            break;
+        case EventTypes.ClientDeleted:
+            await clientDeletedEventHandler(event);
+            break;
+        default:
+            console.log('Unknown event type');
+            return;
     }
 
-    if (event.attributes?.type === EventTypes.ClientDeleted) {
-        await clientDeletedEventHandler(event);
-        return;
-    }
+    // Leaving connection closed when possible
+    await MongoDBHelper.stopDb();
 };

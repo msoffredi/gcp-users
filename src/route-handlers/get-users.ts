@@ -1,4 +1,4 @@
-import { ResponseBody, RouteHandler } from '../api';
+import { ResponseBody, RouteHandler } from '@msoffredi/gcp-common';
 import { User, UserRecord } from '../models/user';
 import { Request } from '@google-cloud/functions-framework';
 

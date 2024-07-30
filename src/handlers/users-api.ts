@@ -3,22 +3,27 @@ import {
     Request,
     Response,
 } from '@google-cloud/functions-framework';
-import { RequestHelper } from '../utils/request-helper';
-import { BadMethodError, BadRequestError, CustomError } from '../api-errors';
-import { healthcheckHandler } from '../route-handlers/healthcheck';
-import { ResponseBody } from '../api';
 import { validateEnvVars } from '../utils/validations';
 import { createUserHandler } from '../route-handlers/create-user';
-import { MongoDBHelper } from '../utils/mongodb-helper';
 import { getOneUserHandler } from '../route-handlers/get-one-user';
 import { delUserHandler } from '../route-handlers/del-user';
 import { getUsersHandler } from '../route-handlers/get-users';
+import {
+    BadMethodError,
+    BadRequestError,
+    CustomError,
+    healthcheckHandler,
+    MongoDBHelper,
+    RequestHelper,
+    ResponseBody,
+} from '@msoffredi/gcp-common';
+import { startDb } from '../utils/db';
 
 export const apiHandler: HttpFunction = async (req: Request, res: Response) => {
     console.log('Request received:', req);
 
     validateEnvVars();
-    await MongoDBHelper.startDb();
+    await startDb();
 
     let status = 200;
     let body: ResponseBody<unknown> = {};
@@ -43,9 +48,6 @@ export const apiHandler: HttpFunction = async (req: Request, res: Response) => {
                 case 'GET':
                     body = await getOneUserHandler(req);
                     break;
-                // case 'PUT':
-                //     // update user
-                //     break;
                 case 'DELETE':
                     body = await delUserHandler(req);
                     break;

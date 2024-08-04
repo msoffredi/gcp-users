@@ -10,8 +10,8 @@ export const eventsHandler: EventFunction = async (
     event: PubsubMessage,
     context: Context
 ): Promise<void> => {
-    console.log('Event received:', event);
-    console.log('Event context', context);
+    console.log('Event received:', JSON.stringify(event));
+    console.log('Event context', JSON.stringify(context));
 
     validateEnvVars();
     await startDb();

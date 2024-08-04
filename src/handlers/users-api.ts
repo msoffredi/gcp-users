@@ -20,13 +20,26 @@ import {
 import { startDb } from '../utils/db';
 
 export const apiHandler: HttpFunction = async (req: Request, res: Response) => {
-    console.log('Request received:', req);
+    console.log('Request received:', RequestHelper.logReq(req));
 
     validateEnvVars();
     await startDb();
 
     let status = 200;
     let body: ResponseBody<unknown> = {};
+
+    // Resolving preflights early
+    if (req.method === 'OPTIONS') {
+        res.status(204)
+            .set({
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,PUT,DELETE',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Max-Age': '3600',
+            })
+            .send();
+        return;
+    }
 
     try {
         if (RequestHelper.getPath(req) === '/healthcheck') {

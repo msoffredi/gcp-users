@@ -1,16 +1,6 @@
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
 
-// jest.mock('@advocate-insights/ms-common', () => {
-//     const originalModule = jest.requireActual('@advocate-insights/ms-common');
-
-//     return {
-//         __esModule: true,
-//         ...originalModule,
-//         publisher: jest.fn(),
-//     };
-// });
-
 // Environment variables
 process.env.DB_USER = 'user';
 process.env.DB_PASSWORD = 'password';
